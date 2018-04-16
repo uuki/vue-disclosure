@@ -1,0 +1,15 @@
+{
+  "name": "vue-disclosure",
+  "version": "1.0.0",
+  "description": "disclosure (accordion) plugin for Vue.js 2.x",
+  "main": "src/index.js",
+  "keywords": [
+    "vue",
+    "accordion",
+    "uuki"
+  ],
+  "author": "uuki <sena.rn68@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+  }
+}
