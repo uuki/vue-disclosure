@@ -16,7 +16,7 @@ Accordion plugin for Vue 2.
 
 ```js
 import Vue from 'vue'
-import VueDisclosure from 'vue-disclosure'
+import VueDisclosure from 'vue-disclosure' # Currently unsupported
 
 
 Vue.use(VueDisclosure)
