@@ -55,4 +55,4 @@ Vue.use(VueDisclosure)
 </script>
 ```
 
-TODO: responsive option
+TODO: grouping
