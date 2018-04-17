@@ -39,13 +39,14 @@ Vue.use(VueDisclosure)
   export default {
     data () {
       options: {
+        active: true, // default true
         ease: 'ease',
         duration: 600,
         responsive: [
           {
             breakpoint: 768,
             options: {
-              active: false // default true
+              active: false
             }
           }
         ],
