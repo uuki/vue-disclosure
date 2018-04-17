@@ -52,7 +52,6 @@
 
         this.$disclosure.items.push( this.item )
         this.bind();
-        console.log(this.item);
       },
       bind () {
         this.$el.addEventListener('click', this.toggle)
