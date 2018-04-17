@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-disclosure-toggler" :class="{ 'vue-disclosure-content-active': isOpen }">
+  <div class="vue-disclosure-toggler" :class="{ 'vue-disclosure-active': isOpen }">
     <slot />
   </div>
 </template>
