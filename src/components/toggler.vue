@@ -51,7 +51,8 @@
         this.item.toggler.$vnode = this.$vnode;
 
         this.$disclosure.items.push( this.item )
-        this.bind();
+        this.bind()
+        this.onResize()
       },
       bind () {
         this.$el.addEventListener('click', this.toggle)
