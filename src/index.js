@@ -11,11 +11,31 @@ import Content from './components/content'
 
 
 var VueDisclosure = {};
+
+function onResize (state) {
+  var timer = false;
+  if(timer !== false) clearTimeout(timer);
+
+  timer = setTimeout(function() {
+    state.width = document.documentElement.clientWidth
+    state.height = document.documentElement.clientHeight
+  }, 200);
+}
+
 VueDisclosure.install = function(Vue, options={}) {
   const state = {
+    active: true,
+    $window: {
+      width: 0,
+      height: 0
+    },
+    setup: false,
     opens: [],
     items: [],
   };
+
+  window.addEventListener('resize', function() { onResize(state.$window) })
+  window.addEventListener('load', function() { onResize(state.$window); state.setup = true; })
 
   // const custom = Object.assign(config, options);
   Vue.util.defineReactive(Vue.prototype, '$disclosure', state)

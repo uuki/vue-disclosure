@@ -6,7 +6,7 @@
 
 <script>
   import config from '../config'
-  import { isImageLoaded } from '../helpers'
+  import { isImageLoaded, isObject } from '../helpers'
 
   export default {
     data () {
@@ -21,7 +21,7 @@
     },
     computed: {
       isOpen () {
-        return this.$disclosure.items[this.num] instanceof Object ? this.$disclosure.items[this.num].open : false
+        return isObject(this.$disclosure.items[this.num]) ? this.$disclosure.items[this.num].open : false
       }
     },
     mounted () {
@@ -32,14 +32,13 @@
         this.num = this.$disclosure.items.length - 1;
         if(!this.$disclosure.items[this.num]) { return; }
 
-        this.item = {
-          content: {
-            el: this.$el,
-            height: ''
-          }
-        };
+        this.item.content = {};
 
-        this.$disclosure.items[this.num] = Object.assign(this.$disclosure.items[this.num], this.item);
+        this.item.content.$el = this.$el;
+        this.item.content.$vnode = this.$vnode;
+        this.item.content.height = '';
+
+        Object.assign(this.$disclosure.items[this.num], this.item);
         this.state = this.$disclosure.items[this.num];
 
         this.update();
@@ -47,13 +46,12 @@
       },
       bind () {
         this.$on('update', this.update);
+        this.$on('active', this.active);
+        this.$on('disable', this.disable);
       },
       update () {
         let height;
-
-        this.$el.classList.remove('vue-disclosure-content');
-        this.$el.style['transition'] = '';
-        this.$el.style['maxHeight'] = '';
+        this.release();
 
         height = this.$el.scrollHeight;
         [].forEach.call(this.$el.querySelectorAll('img'), img => {
@@ -67,6 +65,17 @@
         this.$el.classList.add('vue-disclosure-content');
         this.$el.style['maxHeight'] = '0px';
         this.$el.style['transition'] = `max-height ${ this.state.duration + (height / this.state.duration) }ms 0s ${ this.state.ease }`;
+      },
+      active () {
+        this.update();
+      },
+      disable () {
+        this.release();
+      },
+      release () {
+        this.$el.classList.remove('vue-disclosure-content');
+        this.$el.style['transition'] = '';
+        this.$el.style['maxHeight'] = '';
       },
       toggle () {
         if(this.state.open) {

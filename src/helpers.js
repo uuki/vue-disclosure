@@ -9,3 +9,11 @@ export function isImageLoaded (img) {
 
   return true;
 }
+
+export function isElement (obj) {
+  return obj instanceof HTMLElement;
+}
+
+export function isObject (obj) {
+  return obj instanceof Object;
+}

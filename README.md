@@ -41,7 +41,14 @@ Vue.use(VueDisclosure)
       options: {
         ease: 'ease',
         duration: 600,
-        responsive: [768],
+        responsive: [
+          {
+            breakpoint: 768,
+            options: {
+              active: false // default true
+            }
+          }
+        ],
       }
     }
   }
