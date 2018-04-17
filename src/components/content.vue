@@ -36,7 +36,7 @@
 
         this.item.content.$el = this.$el;
         this.item.content.$vnode = this.$vnode;
-        this.item.content.height = '';
+        this.item.content.height = 0;
 
         Object.assign(this.$disclosure.items[this.num], this.item);
         this.state = this.$disclosure.items[this.num];
@@ -50,34 +50,32 @@
         this.$on('disable', this.disable);
       },
       update () {
-        let height;
-        this.release();
+        this.disable();
 
-        height = this.$el.scrollHeight;
+        this.item.content.height = this.$el.scrollHeight;
         [].forEach.call(this.$el.querySelectorAll('img'), img => {
           if(!isImageLoaded(img)) {
-            height += +img.getAttribute('height');
+            this.item.content.height += +img.getAttribute('height');
           }
         });
-
-        this.$disclosure.items[this.num]['content']['height'] = height;
-
-        this.$el.classList.add('vue-disclosure-content');
-        this.$el.style['maxHeight'] = '0px';
-        this.$el.style['transition'] = `max-height ${ this.state.duration + (height / this.state.duration) }ms 0s ${ this.state.ease }`;
+        // this.$disclosure.items[this.num]['content']['height'] = this.item.content.height;
+        if(this.$disclosure.items[this.num].active) {
+          this.active();
+        }
       },
       active () {
-        this.update();
+        this.$el.classList.add('vue-disclosure-content');
+        this.$el.style['maxHeight'] = '0px';
+        this.$el.style['transition'] = `max-height ${ this.state.duration + (this.item.content.height / this.state.duration) }ms 0s ${ this.state.ease }`;
       },
       disable () {
-        this.release();
-      },
-      release () {
         this.$el.classList.remove('vue-disclosure-content');
         this.$el.style['transition'] = '';
         this.$el.style['maxHeight'] = '';
       },
       toggle () {
+        if(!this.$disclosure.items[this.num].active) { return; }
+
         if(this.state.open) {
           this.$el.style['maxHeight'] = `${ this.$disclosure.items[this.num].content.height }px`;
         } else {

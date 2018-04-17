@@ -85,7 +85,7 @@
         this.item.open = !this.item.open;
       },
       onChangeState () {
-        if( !this.$disclosure.setup || !isObject(this.item.content) ) { return; }
+        if( !isObject(this.item.content) ) { return; }
 
         if(this.item.active) {
           this.item.content.$vnode.child.$emit('active')
