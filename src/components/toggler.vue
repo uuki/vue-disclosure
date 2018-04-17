@@ -88,7 +88,7 @@
         if( !isObject(this.item.content) ) { return; }
 
         if(this.item.active) {
-          this.item.content.$vnode.child.$emit('active')
+          this.item.content.$vnode.child.$emit('update')
         } else {
           this.item.content.$vnode.child.$emit('disable')
         }
