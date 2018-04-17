@@ -9,20 +9,23 @@ Accordion plugin for Vue 2.
 
 ## Installation
 
-
-## Usage
-
 ### Step 1
+
+```
+yarn add vue-disclosure # Currently unsupported
+```
+
+### Step 2
 
 ```js
 import Vue from 'vue'
-import VueDisclosure from 'vue-disclosure' # Currently unsupported
+import VueDisclosure from 'vue-disclosure'
 
 
 Vue.use(VueDisclosure)
 ```
 
-### Step 2
+## Usage
 
 ```vue
 <template>
