@@ -56,4 +56,4 @@ Vue.use(VueDisclosure)
 </script>
 ```
 
-TODO: grouping
+TODO: npm, babel, webpack, test, grouping
