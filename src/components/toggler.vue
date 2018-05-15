@@ -1,16 +1,19 @@
 <template>
-  <div class="vue-disclosure-toggler" :class="{ 'vue-disclosure-active': isOpen }">
+  <div :class="{ 'vue-disclosure-active': isOpen }"
+       class="vue-disclosure-toggler"
+  >
     <slot />
   </div>
 </template>
 
 <script>
-  import { isElement, isObject } from '../helpers'
+  import { isObject } from '../helpers'
 
   export default {
     props: {
       options: {
         type: Object,
+        default() { return {} }
       }
     },
     data () {
@@ -32,13 +35,13 @@
         return this.item.open
       }
     },
+    watch: {
+      'item.active': 'onChangeState'
+    },
     created () {
     },
     mounted () {
       this.init();
-    },
-    watch: {
-      'item.active': 'onChangeState'
     },
     methods: {
       init () {

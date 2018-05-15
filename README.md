@@ -56,4 +56,4 @@ Vue.use(VueDisclosure)
 </script>
 ```
 
-TODO: npm, babel, webpack, test, demo, grouping
+TODO: npm, demo, grouping

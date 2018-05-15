@@ -1,11 +1,13 @@
 <template>
-  <div class="vue-disclosure-content" :class="{ 'vue-disclosure-active': isOpen }">
+  <div :class="{ 'vue-disclosure-active': isOpen }"
+       class="vue-disclosure-content"
+  >
     <slot />
   </div>
 </template>
 
 <script>
-  import config from '../config'
+  // import config from '../config'
   import { isImageLoaded, isObject } from '../helpers'
 
   export default {
@@ -16,13 +18,13 @@
         state: {}
       }
     },
-    watch: {
-      'state.open': 'toggle'
-    },
     computed: {
       isOpen () {
         return isObject(this.$disclosure.items[this.num]) ? this.$disclosure.items[this.num].open : false
       }
+    },
+    watch: {
+      'state.open': 'toggle'
     },
     mounted () {
       this.init()

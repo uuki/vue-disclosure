@@ -1,7 +1,7 @@
 /**
  * vue-disclosure
  */
-import config from './config'
+// import config from './config'
 
 /**
  * components
@@ -22,7 +22,7 @@ function onResize (state) {
   }, 200);
 }
 
-VueDisclosure.install = function(Vue, options={}) {
+VueDisclosure.install = function(Vue, options = {}) {
   const state = {
     active: true,
     $window: {
