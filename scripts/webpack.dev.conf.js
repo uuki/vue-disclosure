@@ -1,13 +1,10 @@
-/*eslint-env node */
-
 const path = require('path')
 
 module.exports = Object.assign({
-  entry: '../example',
+  entry: './example',
   output: {
     filename: 'build.js',
-    // path: __dirname,
-    path: path.resolve(__dirname, '../'),
+    path: path.join(__dirname, '../'),
     publicPath: '/',
   },
   devServer: {

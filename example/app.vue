@@ -1,7 +1,27 @@
 <template>
-  <div class="accordion">
-    <div>toggler</div>
-    <div>content</div>
+  <div class="demo">
+    <h1>DEMO</h1>
+
+    <section class="pattern">
+      <h2 class="pattern__head">Basic</h2>
+      <div class="pattern__content">
+
+        <disclosure-toggler :options="disclosureBasic">Click Here</disclosure-toggler>
+        <disclosure-content>Hello</disclosure-content>
+
+      </div>
+    </section>
+
+    <section class="pattern">
+      <h2 class="pattern__head">Responsive (demo 768px)</h2>
+      <div class="pattern__content">
+
+        <disclosure-toggler :options="disclosureResponsive">Any Title</disclosure-toggler>
+        <disclosure-content>Any Contents</disclosure-content>
+
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -10,6 +30,22 @@
     name: 'App',
     data() {
       return {
+        disclosureBasic: {
+          active: true,
+          duration: 600
+        },
+        disclosureResponsive: {
+          active: false,
+          duration: 600,
+          responsive: [
+            {
+              breakpoint: 768,
+              options: {
+                active: true
+              }
+            }
+          ]
+        }
       }
     },
   }
@@ -24,6 +60,16 @@
   p {
     line-height: 1.8;
     margin: 0 0 30px;
-    letter-spacing: 0.02em;
+    letter-spacing: .02em;
+  }
+
+  .demo {
+    width: 800px;
+    margin: auto;
+    padding: 40px 0;
+  }
+
+  .pattern {
+    margin-bottom: 40px;
   }
 </style>
