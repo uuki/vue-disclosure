@@ -4,9 +4,6 @@
 
 Accordion plugin for Vue 2.
 
-## Requirements
-
-
 ## Installation
 
 ### Step 1
