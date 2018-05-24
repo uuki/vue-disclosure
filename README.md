@@ -12,7 +12,7 @@ Accordion plugin for Vue 2.
 ### Step 1
 
 ```shell
-yarn add vue-disclosure
+$ yarn add vue-disclosure
 ```
 
 ### Step 2
