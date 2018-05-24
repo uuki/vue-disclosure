@@ -11,7 +11,7 @@ Accordion plugin for Vue 2.
 
 ### Step 1
 
-```
+```shell
 yarn add vue-disclosure
 ```
 
@@ -27,7 +27,7 @@ Vue.use(VueDisclosure)
 
 ## Usage
 
-```vue
+```html
 <template>
   <disclosure-toggler :options="options">The item opens and closes by clicking.</disclosure-toggler>
   <disclosure-content>
