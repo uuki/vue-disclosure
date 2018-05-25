@@ -2,7 +2,7 @@ const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = Object.assign({
-  entry: '../src',
+  entry: './src',
   output: {
     library: 'VueDisclosure',
     libraryTarget: 'umd',

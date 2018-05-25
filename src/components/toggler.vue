@@ -98,21 +98,28 @@
         }
       },
       onResize () {
-        this.item.responsive.forEach(point => {
+        let count = 0;
+
+        this.item.responsive.forEach((point, i) => {
           if(!isObject(point)) { return; }
 
           let responsiveSettings = {}
           Object.assign(responsiveSettings, this.defaultSettings)
 
-          let isBreak = this.item.mobileFirst ? (point.breakpoint > this.$disclosure.$window.width) : (point.breakpoint < this.$disclosure.$window.width)
+          let isBreak = this.item.mobileFirst ? (point.breakpoint >= this.$disclosure.$window.width) : (point.breakpoint <= this.$disclosure.$window.width)
 
           if(isBreak) {
             for(let key in point.options) {
               responsiveSettings[key] = point.options[key];
             }
+
+            Object.assign(this.item, responsiveSettings)
+            count++
           }
 
-          Object.assign(this.item, responsiveSettings);
+          if(i >= this.item.responsive.length - 1 && !count) {
+            Object.assign(this.item, responsiveSettings)
+          }
         })
       }
     }

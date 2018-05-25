@@ -36,12 +36,25 @@
         },
         disclosureResponsive: {
           active: false,
-          duration: 600,
           responsive: [
+            {
+              breakpoint: 1024,
+              options: {
+                active: true,
+                duration: 1000
+              }
+            },
+            {
+              breakpoint: 900,
+              options: {
+                active: false
+              }
+            },
             {
               breakpoint: 768,
               options: {
-                active: true
+                active: true,
+                duration: 600
               }
             }
           ]
