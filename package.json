@@ -5,7 +5,8 @@
   "main": "dist/vue-disclosure.js",
   "scripts": {
     "build": "node ./scripts/build.js",
-    "dev": "webpack-dev-server --config ./scripts/webpack.dev.conf.js --inline --hot --progress"
+    "dev": "webpack-dev-server --config ./scripts/webpack.dev.conf.js --inline --hot --progress",
+    "test": "jest --config test/jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "author": "uuki <sena.rn68@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.16",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.1",
@@ -37,11 +39,13 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-vue": "^4.5.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "jest": "^23.0.1",
     "ora": "^2.1.0",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "vue": "^2.5.2",
     "vue-hot-reload-api": "^1.2.2",
+    "vue-jest": "^2.6.0",
     "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
@@ -55,5 +59,11 @@
   "browsers": [
     "> 1%",
     "last 2 versions"
+  ],
+  "files": [
+    "README.md",
+    "dist",
+    "package.json",
+    "LICENSE"
   ]
 }
