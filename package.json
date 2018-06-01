@@ -1,6 +1,6 @@
 {
   "name": "vue-disclosure",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "accordion plugin for Vue.js 2.x",
   "main": "dist/vue-disclosure.js",
   "scripts": {
