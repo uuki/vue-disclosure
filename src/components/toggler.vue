@@ -64,6 +64,10 @@
         this.$on('active', this.active)
         this.$on('disable', this.disable)
 
+        this.$disclosure.reload = () => {
+          this.item.content.$vnode.child.$emit('update')
+        }
+
         // Attach Responsive Event
         if(this.item.responsive.length) {
           this.$watch('$disclosure.$window.width', this.onResize)

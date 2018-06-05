@@ -32,6 +32,7 @@ VueDisclosure.install = function(Vue, options = {}) {
     setup: false,
     opens: [],
     items: [],
+    reload: () => { return }
   };
 
   window.addEventListener('resize', function() { onResize(state.$window) })

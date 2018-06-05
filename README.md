@@ -26,6 +26,8 @@ Vue.use(VueDisclosure)
 
 ## Usage
 
+### Basic
+
 ```html
 <template>
   <disclosure-toggler :options="options">The item opens and closes by clicking.</disclosure-toggler>
@@ -50,6 +52,32 @@ Vue.use(VueDisclosure)
           }
         ],
       }
+    }
+  }
+</script>
+```
+
+### Use v-for
+
+```html
+<template>
+  <disclosure-toggler>The item opens and closes by clicking.</disclosure-toggler>
+  <disclosure-content>
+    <div v-for="item in items">
+      <p>{{ item }}</p>
+    </div>
+  </disclosure-content>
+</template>
+
+<script>
+  export default {
+    data () {
+      items: ['foo', 'bar', 'baz']
+    },
+    mounted () {
+      this.$nextTick(() => {
+        this.$disclosure.reload()
+      })
     }
   }
 </script>
