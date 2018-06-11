@@ -8,6 +8,7 @@
 
 <script>
   import { isObject } from '../helpers'
+  import { easing } from '../utils'
 
   export default {
     props: {
@@ -47,6 +48,14 @@
       init () {
         this.num = this.$disclosure.items.length;
         Object.assign(this.defaultSettings, this.options);
+
+        this.defaultSettings.ease = easing(this.defaultSettings.ease);
+        if(this.defaultSettings.responsive.length) {
+          this.defaultSettings.responsive.forEach(point => {
+            point.options.ease = easing(point.options.ease || 'ease');
+          })
+        }
+
         this.item = Object.assign({}, this.defaultSettings);
 
         this.item.toggler = {};

@@ -2,23 +2,39 @@
   <div class="demo">
     <h1>DEMO</h1>
 
-    <section class="pattern">
-      <h2 class="pattern__head">Basic</h2>
+    <section class="pattern" v-for="(item, i) in items" :key="i">
+      <h2 class="pattern__head">{{ item.title }}</h2>
+
       <div class="pattern__content">
-
-        <disclosure-toggler :options="disclosureBasic">Click Here</disclosure-toggler>
-        <disclosure-content>Hello</disclosure-content>
-
+        <disclosure-toggler :options="item.option" class="disclosure-toggler">Click Here</disclosure-toggler>
+        <disclosure-content class="disclosure-content"><p>Hello</p></disclosure-content>
       </div>
     </section>
 
-    <section class="pattern">
-      <h2 class="pattern__head">Responsive (demo 768px)</h2>
-      <div class="pattern__content">
+    <section class="responsive">
+      <h2 class="responsive__head">Responsive (768)</h2>
 
-        <disclosure-toggler :options="disclosureResponsive">Any Title</disclosure-toggler>
-        <disclosure-content>Any Contents</disclosure-content>
-
+      <div class="responsive__content">
+        <disclosure-toggler :options="responsive" class="responsive__toggler">Any Contents</disclosure-toggler>
+        <disclosure-content>
+          <table class="table">
+            <tr>
+              <th>one</th>
+              <th>two</th>
+              <th>three</th>
+            </tr>
+            <tr>
+              <td>foo</td>
+              <td>bar</td>
+              <td>baz</td>
+            </tr>
+            <tr>
+              <td>hoge</td>
+              <td>fuga</td>
+              <td>piyo</td>
+            </tr>
+          </table>
+        </disclosure-content>
       </div>
     </section>
 
@@ -30,30 +46,43 @@
     name: 'App',
     data() {
       return {
-        disclosureBasic: {
-          active: true,
-          duration: 600
-        },
-        disclosureResponsive: {
+        items: [
+          {
+            title: 'Basic',
+            option: {
+              active: true,
+              duration: 800,
+              ease: 'ease'
+            }
+          },
+          {
+            title: 'EaseIn',
+            option: {
+              ease: 'ease-in'
+            }
+          },
+          {
+            title: 'EaseOut',
+            option: {
+              ease: 'ease-out'
+            }
+          },
+          {
+            title: 'EaseInOutQuad (cubic-bezier)',
+            option: {
+              duration: 700,
+              ease: 'easeInOutQuad'
+            }
+          },
+        ],
+        responsive: {
           active: false,
           responsive: [
-            {
-              breakpoint: 1024,
-              options: {
-                active: true,
-                duration: 1000
-              }
-            },
-            {
-              breakpoint: 900,
-              options: {
-                active: false
-              }
-            },
             {
               breakpoint: 768,
               options: {
                 active: true,
+                ease: 'easeInOutQuad',
                 duration: 600
               }
             }
@@ -64,7 +93,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   body {
     margin: 0;
     font-size: 16px;
@@ -72,7 +101,7 @@
 
   p {
     line-height: 1.8;
-    margin: 0 0 30px;
+    margin: 0;
     letter-spacing: .02em;
   }
 
@@ -83,6 +112,49 @@
   }
 
   .pattern {
+    min-height: 250px;
     margin-bottom: 40px;
+  }
+
+  .pattern__content {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .disclosure-toggler {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #1cd477;
+  }
+
+  .disclosure-content {
+    p {
+      padding: 60px 15px;
+      background-color:#1bc770;
+    }
+  }
+
+  .responsive__toggler {
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  .table {
+    background-color: #f2f2f2;
+
+    th, td {
+      padding: 15px 10px;
+      text-align: center;
+    }
+    th {
+      width: 100px;
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .responsive__toggler {
+      cursor: pointer;
+    }
   }
 </style>

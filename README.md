@@ -83,4 +83,31 @@ Vue.use(VueDisclosure)
 </script>
 ```
 
+### Ease option
+
+ease, ease-in, ease-out  
+and more (cubic-bezier)
+
+- easeInCubic
+- easeOutCubic
+- easeInOutCubic
+- easeInCirc
+- easeOutCirc
+- easeInOutCirc
+- easeInExpo
+- easeOutExpo
+- easeInOutExpo
+- easeInQuad
+- easeOutQuad
+- easeInOutQuad
+- easeInQuart
+- easeOutQuart
+- easeInOutQuart
+- easeInQuint
+- easeOutQuint
+- easeInOutQuint
+- easeInSine
+- easeOutSine
+- easeInOutSine
+
 TODO: grouping

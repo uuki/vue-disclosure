@@ -35,7 +35,6 @@
         if(!this.$disclosure.items[this.num]) { return; }
 
         this.item.content = {};
-
         this.item.content.$el = this.$el;
         this.item.content.$vnode = this.$vnode;
         this.item.content.height = 0;

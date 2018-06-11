@@ -2,6 +2,17 @@ const path = require('path')
 
 module.exports = Object.assign({
   entry: './example',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          scss: 'vue-style-loader!css-loader!sass-loader'
+        }
+      }
+    ]
+  },
   output: {
     filename: 'build.js',
     path: path.join(__dirname, '../'),
